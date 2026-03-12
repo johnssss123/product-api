@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+
 
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class ProductController {
 
     // POST /products
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product created = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
@@ -40,7 +42,7 @@ public class ProductController {
     // PUT /products/{id}
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id,
-                                                 @RequestBody Product product) {
+                                                 @Valid @RequestBody Product product) {
         Product updated = productService.updateProduct(id, product);
         return ResponseEntity.ok(updated);
     }
