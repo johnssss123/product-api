@@ -1,6 +1,7 @@
 package com.ecommerce.product_api.service;
 
 import com.ecommerce.product_api.entity.Product;
+import com.ecommerce.product_api.exception.ResourceNotFoundException;
 import com.ecommerce.product_api.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class ProductService {
     // Get one product by id
     public Product getProductById(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id));
     }
 
     // Update a product
