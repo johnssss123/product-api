@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class LoinRequestDTO {
+public class LoginRequestDTO {
     @NotBlank(message = "Username cannot be empty")
     private String username;
 
